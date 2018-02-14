@@ -22,7 +22,7 @@ import TodoActions from "../Actions/actions";
 export function Todo(props) {
     const {isDone, text} = props;
     if (isDone) {
-        return <strike> {text} </strike>;
+        return <strike> <font color="LightGrey">{text}</font> </strike>;
     } else {
         return <span> {text} </span>
     }
@@ -32,7 +32,7 @@ function TodosList({todos}) {
 
     return (
         <div>
-            <h3>Show Todo List: {todos.length} items</h3>
+            <h3>Show Todo List: <font color="red">{todos.length}</font> items</h3>
 
             <ul>
                 {todos.map((t, id) =>
