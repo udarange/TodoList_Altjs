@@ -14,7 +14,7 @@
  * Created by archana on 2/9/18.
  */
 
-import React from "react"
+import React from "react";
 import AddTodoList from "./Components/addTodoList";
 import ShowTodoList from "./Components/showTodoList";
 
@@ -26,5 +26,4 @@ export default class Container extends React.Component {
             <ShowTodoList/>
         </div>
     }
-
 }

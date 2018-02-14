@@ -20,7 +20,7 @@ import TodoStore from "../Stores/store";
 import TodoActions from "../Actions/actions";
 
 export function Todo(props) {
-    const {id, isDone, text} = props;
+    const {isDone, text} = props;
     if (isDone) {
         return <strike> {text} </strike>;
     } else {
@@ -32,7 +32,7 @@ function TodosList({todos}) {
 
     return (
         <div>
-            <h3>Show Todo List</h3>
+            <h3>Show Todo List: {todos.length} items</h3>
 
             <ul>
                 {todos.map((t, id) =>
@@ -53,7 +53,7 @@ export default function () {
     return <AltContainer
         stores={[TodoStore]}
         inject={{
-            todos: () => TodoStore.getState().todos
+            todos: () => TodoStore.getState().todos,
         }}
     >
         <TodosList/>

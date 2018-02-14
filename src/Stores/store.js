@@ -14,9 +14,8 @@
  * Created by archana on 2/12/18.
  */
 
-import alt from '../../alt'
-import TodoAction from "../Actions/actions"
-import {List, Map} from "immutable";
+import alt from "../../alt";
+import TodoAction from "../Actions/actions";
 
 class TodoStore {
     constructor() {

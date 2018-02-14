@@ -22,6 +22,7 @@ export default class AddTodoList extends React.Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleSubmit(e){
         if(e.keyCode === 13){
             let newItem = this.refs.newItem.value;
@@ -29,6 +30,7 @@ export default class AddTodoList extends React.Component {
             this.refs.newItem.value = "";
         }
     }
+
     render(){
         return (
             <div>

@@ -14,11 +14,11 @@
  * Created by archana on 2/12/18.
  */
 
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import {render} from "react-dom";
 import Container from "./src/containers";
 
 render(
     <Container />,
-    document.getElementById('react')
+    document.getElementById('root')
 );
