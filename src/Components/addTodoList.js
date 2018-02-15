@@ -18,11 +18,6 @@ import React from "react";
 import TodoActions from "../Actions/actions";
 
 export default class AddTodoList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
     handleSubmit(e){
         if(e.keyCode === 13){
             let newItem = this.refs.newItem.value;
@@ -36,7 +31,7 @@ export default class AddTodoList extends React.Component {
             <div>
                 <input type="text"
                        ref="newItem"
-                       placeholder="Add Todo" onKeyDown={this.handleSubmit}  />
+                       placeholder="Add Todo" onKeyDown={(e) => this.handleSubmit(e)}/>
             </div>
         )
     }

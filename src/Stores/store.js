@@ -33,9 +33,9 @@ class TodoStore {
         console.log("STORE ---> add")
         console.log(this.todos);
         this.todos.push({
-            id : this.nextTodoId++,
-            isDone : false,
-            text : task
+            id: this.nextTodoId++,
+            isDone: false,
+            text: task
         })
     }
 
