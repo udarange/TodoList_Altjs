@@ -17,8 +17,11 @@
 import React from "react";
 import {render} from "react-dom";
 import Container from "./src/containers";
+import {BrowserRouter} from "react-router-dom";
 
 render(
-    <Container />,
-    document.getElementById('root')
+    <BrowserRouter>
+        <Container />
+    </BrowserRouter>
+    , document.getElementById('root')
 );
