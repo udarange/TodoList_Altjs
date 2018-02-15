@@ -21,11 +21,9 @@ import TodoActions from "../Actions/actions";
 
 export function Todo(props) {
     const {isDone, text} = props;
-    if (isDone) {
-        return <strike> <font color="LightGrey">{text}</font> </strike>;
-    } else {
-        return <span> {text} </span>
-    }
+    return isDone ?
+        <strike> <font color="LightGrey">{text}</font> </strike> :
+        <span> {text} </span>;
 }
 
 function TodosList({todos}) {
@@ -35,8 +33,8 @@ function TodosList({todos}) {
             <h3>Show Todo List: <font color="red">{todos.length}</font> items</h3>
 
             <ul>
-                {todos.map((t, id) =>
-                    <li key={id}>
+                {todos.map((t) =>
+                    <li key={t.id}>
                         <button onClick={()=>TodoActions.toggleTodo(t.id)}>Done</button>
                         <button onClick={()=>TodoActions.deleteTodo(t.id)}>Delete</button>
                         <Todo id={t.id} isDone={t.isDone} text={t.text}/>
