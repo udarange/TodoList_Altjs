@@ -28,6 +28,11 @@ class TodoActions {
         return id;
     }
 
+    updateTodo(id, text) {
+        console.log("ACTION ---> updateTodo " + text + " " + id)
+        return {text, id};
+    }
+
     deleteTodo(id) {
         console.log("ACTION ---> deleteTodo "+ id)
         return id;

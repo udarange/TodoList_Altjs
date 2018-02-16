@@ -11,7 +11,7 @@
  */
 
 /**
- * Created by archana on 2/12/18.
+ * Created by archana on 2/16/18.
  */
 
 import React from "react";
@@ -19,30 +19,29 @@ import AltContainer from "alt-container";
 import TodoStore from "../Stores/store";
 import TodoActions from "../Actions/actions";
 
-export function Todo(props) {
-    const {isDone, text} = props;
-    return isDone ?
-        <strike> <font color="LightGrey">{text}</font> </strike> :
-        <span> {text} </span>;
+
+export function Todo({isDone, text}) {
+    if (isDone) {
+        return <span> {text}</span>;
+    }
 }
 
-function TodosList({todos}) {
+function TodosList({todos, completedCount}) {
 
     return (
         <div>
-            <h3>Show Todo List: <font color="red">{todos.length}</font> items</h3>
+            <h3>Completed List: <font color="red">{completedCount}</font> items</h3>
 
             <ul>
-                {todos.map((t) =>
-                    <li key={t.id}>
-                        <button onClick={()=>TodoActions.toggleTodo(t.id)}>Done</button>
-                        <button onClick={()=>TodoActions.deleteTodo(t.id)}>Delete</button>
-                        <Todo id={t.id} isDone={t.isDone} text={t.text}/>
-                    </li>
-                )}
+                {todos.map((t) => {
+                    if (t.isDone) {
+                        return <li key={t.id}>
+                            <button onClick={() => TodoActions.deleteTodo(t.id)}>Delete</button>
+                            <span> {t.text}</span>
+                        </li>
+                    }
+                })}
             </ul>
-
-
         </div>
     )
 }
@@ -52,6 +51,7 @@ export default function () {
         stores={[TodoStore]}
         inject={{
             todos: () => TodoStore.getState().todos,
+            completedCount: () => TodoStore.getState().completedItem
         }}
     >
         <TodosList/>

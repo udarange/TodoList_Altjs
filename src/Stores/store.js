@@ -21,11 +21,13 @@ class TodoStore {
     constructor() {
         this.todos = [];
         this.nextTodoId =0;
+        this.completedItem = 0;
 
         this.bindListeners({
             handleAddTodo: TodoAction.ADD_NEW_TODO,
             handleToggleTodo: TodoAction.TOGGLE_TODO,
-            handleDeleteTodo: TodoAction.DELETE_TODO,
+            handleUpdateTodo: TodoAction.UPDATE_TODO,
+            handleDeleteTodo: TodoAction.DELETE_TODO
         });
     }
 
@@ -44,7 +46,22 @@ class TodoStore {
 
         this.todos.map(t => {
             if (t.id === id) {
+                if (!t.isDone) {     /*if previous state is false*/
+                    this.completedItem++;
+                } else {
+                    this.completedItem--;
+                }
                 t.isDone = !t.isDone;
+            }
+        });
+    }
+
+    handleUpdateTodo(parameters) {
+        console.log("STORE ---> Update");
+
+        this.todos.map(t => {
+            if (t.id === parameters.id) {
+                t.text = parameters.text;
             }
         });
     }
