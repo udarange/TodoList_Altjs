@@ -20,8 +20,26 @@ import TodoAction from "../Actions/actions";
 class TodoStore {
     constructor() {
         this.todos = [];
-        this.nextTodoId =0;
-        this.completedItem = 0;
+        this.nextTodoId = 3;
+        this.completedItem = 1;
+
+        /* Dummy data */
+        this.todos.push({
+            id: 0,
+            isDone: false,
+            text: "task01"
+        })
+        this.todos.push({
+            id: 1,
+            isDone: true,
+            text: "task02"
+        })
+        this.todos.push({
+            id: 2,
+            isDone: false,
+            text: "task03"
+        })
+        /* Dummy data end*/
 
         this.bindListeners({
             handleAddTodo: TodoAction.ADD_NEW_TODO,
