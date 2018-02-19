@@ -19,26 +19,46 @@ import AltContainer from "alt-container";
 import TodoStore from "../Stores/store";
 import TodoActions from "../Actions/actions";
 
-export function Todo(props) {
-    const {isDone, text} = props;
-    return isDone ?
-        <strike> <font color="LightGrey">{text}</font> </strike> :
-        <span> {text} </span>;
+export function Edit({text, id}) {
+    console.log("##################" + text + " " + id);
+    return <input type="text" value={text}/>
+}
+
+export function Todo({isDone, text, id}) {
+    if (isDone) {
+        return <div>
+            <button onClick={() => TodoActions.toggleTodo(id)}>Undo</button>
+            <button onClick={() => TodoActions.deleteTodo(id)}>Delete</button>
+            <span> <strike><font color="LightGrey">{text}</font> </strike></span>
+        </div>
+    } else {
+        let isEditing = false;
+        if (isEditing) {
+            return <div>
+                <button >Cancel</button>
+                <button >Save</button>
+                <input type="text" value={text} readOnly={true}/>
+            </div>
+        } else {
+            return <div>
+                <button onClick={() => TodoActions.toggleTodo(id)}>Done</button>
+                <button onClick={e => Edit({text, id})}>__Edit</button>
+                <span> {text} </span>
+            </div>
+        }
+    }
 }
 
 function TodosList({todos}) {
-
     return (
         <div>
             <h3>Show All List: <font color="red">{todos.length}</font> items</h3>
-
+            {/*<EditTodo id={1} text={"Hello"}/>*/}
             <ul>
                 {todos.map((t) =>
                     <li key={t.id}>
-                        <button onClick={() => TodoActions.toggleTodo(t.id)}>Done</button>
-                        <button onClick={() => TodoActions.updateTodo(t.id, "TEMP")}>Edit</button>
-                        <button onClick={() => TodoActions.deleteTodo(t.id)}>Delete</button>
                         <Todo id={t.id} isDone={t.isDone} text={t.text}/>
+                        {/*<TodoItem t={t}/>*/}
                     </li>
                 )}
             </ul>
@@ -50,7 +70,7 @@ export default function () {
     return <AltContainer
         stores={[TodoStore]}
         inject={{
-            todos: () => TodoStore.getState().todos,
+            todos: () => TodoStore.getState().todos
         }}
     >
         <TodosList/>
