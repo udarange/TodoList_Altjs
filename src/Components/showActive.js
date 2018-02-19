@@ -20,12 +20,6 @@ import TodoStore from "../Stores/store";
 import TodoActions from "../Actions/actions";
 
 
-export function Todo({isDone, text}) {
-    if (isDone) {
-        return <span> {text}</span>;
-    }
-}
-
 function TodosList({todos, completedCount}) {
     return (
         <div>
