@@ -35,11 +35,11 @@ export default class EditTodo extends React.Component {
 
     handleChange(event) {
         this.setState({value: event.target.value});
-        console.log("<<<" + this.state.value)
+        // console.log("<<<" + this.state.value)
     }
 
     handleSubmit() {
-        console.log(">>>>>>>>>>>>>>>>" + this.state.id + " " + this.state.value)
+        // console.log(">>>>>>>>>>>>>>>>" + this.state.id + " " + this.state.value)
         TodoActions.updateTodo(this.state.id, this.state.value)
         // console.log("TEST");
         this.edittodo();
@@ -76,18 +76,6 @@ export default class EditTodo extends React.Component {
                 <span> {this.state.value} </span>
             </div>
         }
-
-
-        // return (
-        //     <div>
-        //         <form onSubmit={this.handleSubmit}>
-        //             <label>
-        //                 <input type="text" value={this.state.value} onChange={this.handleChange}/>
-        //             </label>
-        //             <input type="submit" value="Submit"/>
-        //         </form>
-        //     </div>
-        // );
     }
 }
 

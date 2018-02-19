@@ -21,7 +21,7 @@ class TodoStore {
     constructor() {
         this.todos = [];
         this.nextTodoId = 3;
-        this.completedItem = 1;
+        this.completedItem = 0;
 
         /* Dummy data */
         this.todos.push({
@@ -31,7 +31,7 @@ class TodoStore {
         })
         this.todos.push({
             id: 1,
-            isDone: true,
+            isDone: false,
             text: "task02"
         })
         this.todos.push({
@@ -87,6 +87,7 @@ class TodoStore {
     handleDeleteTodo(id) {
         console.log("STORE ---> delete")
         this.todos = this.todos.filter(t => t.id !== id)
+        this.completedItem--;
     }
 }
 
