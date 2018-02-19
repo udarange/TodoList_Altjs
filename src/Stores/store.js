@@ -16,6 +16,7 @@
 
 import alt from "../../alt";
 import TodoAction from "../Actions/actions";
+// import axios from "axios";
 
 class TodoStore {
     constructor() {
@@ -23,23 +24,22 @@ class TodoStore {
         this.nextTodoId = 3;
         this.completedItem = 0;
 
-        /* Dummy data */
+        /* Dummy Data */
         this.todos.push({
             id: 0,
             isDone: false,
             text: "task01"
-        })
+        });
         this.todos.push({
             id: 1,
             isDone: false,
             text: "task02"
-        })
+        });
         this.todos.push({
             id: 2,
             isDone: false,
             text: "task03"
-        })
-        /* Dummy data end*/
+        });
 
         this.bindListeners({
             handleAddTodo: TodoAction.ADD_NEW_TODO,
@@ -47,7 +47,14 @@ class TodoStore {
             handleUpdateTodo: TodoAction.UPDATE_TODO,
             handleDeleteTodo: TodoAction.DELETE_TODO
         });
+
+        // axios.get('http://localhost:8080/todos')
+        //     .then(received => {
+        //         console.log(received.data);
+        //         received.data.map(t => this.todos.push(t))
+        //     })
     }
+
 
     handleAddTodo(task) {
         console.log("STORE ---> add")
