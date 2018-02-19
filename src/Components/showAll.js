@@ -18,11 +18,12 @@ import React from "react";
 import AltContainer from "alt-container";
 import TodoStore from "../Stores/store";
 import TodoActions from "../Actions/actions";
+import EditTodo from "./editTodo";
 
-export function Edit({text, id}) {
-    console.log("##################" + text + " " + id);
-    return <input type="text" value={text}/>
-}
+// export function Edit({text, id}) {
+//     console.log("##################" + text + " " + id);
+//     return <input type="text" value={text}/>
+// }
 
 export function Todo({isDone, text, id}) {
     if (isDone) {
@@ -32,20 +33,21 @@ export function Todo({isDone, text, id}) {
             <span> <strike><font color="LightGrey">{text}</font> </strike></span>
         </div>
     } else {
-        let isEditing = false;
-        if (isEditing) {
-            return <div>
-                <button >Cancel</button>
-                <button >Save</button>
-                <input type="text" value={text} readOnly={true}/>
-            </div>
-        } else {
-            return <div>
-                <button onClick={() => TodoActions.toggleTodo(id)}>Done</button>
-                <button onClick={e => Edit({text, id})}>__Edit</button>
-                <span> {text} </span>
-            </div>
-        }
+        return <EditTodo id={id} isDone={isDone} text={text}/>
+        // let isEditing = false;
+        // if (isEditing) {
+        //     return <div>
+        //         <button >Cancel</button>
+        //         <button >Save</button>
+        //         <input type="text" value={text} readOnly={true}/>
+        //     </div>
+        // } else {
+        //     return <div>
+        //         <button onClick={() => TodoActions.toggleTodo(id)}>Done</button>
+        //         <button onClick={e => Edit({text, id})}>__Edit</button>
+        //         <span> {text} </span>
+        //     </div>
+        // }
     }
 }
 
